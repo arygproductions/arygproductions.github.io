@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aryg Apps — Aryg Productions Documentation Hub</title>
+
+<!-- ===== SEO / search & social preview (helps Google understand the page) ===== -->
+<meta name="description" content="Aryg Apps — documentation, guides, and source code for apps by Aryg Productions, including Omzulink, a private Wi-Fi file and message transfer app for Mac, Android, and iPhone." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://arygproductions.com/" />
+
+<!-- Open Graph (Facebook, LinkedIn, iMessage previews) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Aryg Apps" />
+<meta property="og:title" content="Aryg Apps — Documentation Hub" />
+<meta property="og:description" content="One place for all Aryg Productions apps — documentation, guides, and source code." />
+<meta property="og:url" content="https://arygproductions.com/" />
+
+<!-- Twitter / X preview -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Aryg Apps — Documentation Hub" />
+<meta name="twitter:description" content="One place for all Aryg Productions apps — documentation, guides, and source code." />
+
+<!-- Structured data: tells Google this site IS the brand "Aryg Productions" -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Aryg Productions",
+      "alternateName": "Aryg Apps",
+      "url": "https://arygproductions.com/",
+      "sameAs": ["https://github.com/arygproductions"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Aryg Apps — Aryg Productions",
+      "url": "https://arygproductions.com/",
+      "publisher": { "@type": "Organization", "name": "Aryg Productions" }
+    }
+  ]
+}
+</script>
+<!-- ============================================================================ -->
+
+<!-- ====================================================================== -->
+<!--  👋 HELLO! YOU ONLY NEED TO EDIT TWO THINGS ON THIS PAGE:               -->
+<!--  1) The SITE SETTINGS block just below (your name, headline).           -->
+<!--  2) The APPS list further down (one entry per app).                     -->
+<!--  Everything is labeled. See EDIT-ME-GUIDE.md for a friendly walkthrough.-->
+<!-- ====================================================================== -->
+
+<style>
+  :root{
+    --bg:#0f1117;
+    --bg-soft:#171a23;
+    --card:#1c2030;
+    --card-hover:#232838;
+    --text:#e7e9ee;
+    --muted:#9aa3b2;
+    --accent:#6d8cff;
+    --accent-2:#8b5cf6;
+    --border:#2a3043;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(109,140,255,.18),transparent),
+               radial-gradient(900px 500px at -10% 10%,rgba(139,92,246,.15),transparent),
+               var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    padding:72px 0 40px;
+    text-align:center;
+  }
+  .badge{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(109,140,255,.12);
+    border:1px solid var(--border);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  header.site h1{
+    font-size:clamp(32px,6vw,52px);
+    line-height:1.1;
+    margin:0 0 14px;
+    background:linear-gradient(90deg,var(--text),#aab4ff);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  header.site p.tagline{
+    font-size:clamp(16px,2.5vw,20px);
+    color:var(--muted);
+    max-width:620px;
+    margin:0 auto;
+  }
+  .header-actions{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:12px;font-weight:600;font-size:15px;
+    border:1px solid var(--border);transition:.15s ease;
+  }
+  .btn:hover{text-decoration:none;transform:translateY(-1px);}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none;}
+  .btn.ghost{background:var(--card);color:var(--text);}
+
+  /* ---------- Search ---------- */
+  .toolbar{display:flex;justify-content:center;margin:10px 0 40px;}
+  .search{
+    width:100%;max-width:480px;position:relative;
+  }
+  .search input{
+    width:100%;padding:13px 16px 13px 44px;border-radius:12px;
+    background:var(--bg-soft);border:1px solid var(--border);color:var(--text);
+    font-size:15px;outline:none;
+  }
+  .search input:focus{border-color:var(--accent);}
+  .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.5;}
+
+  /* ---------- App grid ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px;padding-bottom:30px;
+  }
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;display:flex;flex-direction:column;transition:.18s ease;
+  }
+  .card:hover{background:var(--card-hover);transform:translateY(-3px);border-color:var(--accent);}
+  .card .icon{
+    width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:24px;background:linear-gradient(135deg,rgba(109,140,255,.25),rgba(139,92,246,.25));
+    border:1px solid var(--border);margin-bottom:16px;
+  }
+  .card h3{margin:0 0 8px;font-size:20px;}
+  .card .desc{color:var(--muted);font-size:15px;flex:1;margin:0 0 18px;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px;}
+  .tag{font-size:12px;color:var(--muted);background:var(--bg-soft);border:1px solid var(--border);padding:3px 10px;border-radius:999px;}
+  .card-links{display:flex;gap:10px;flex-wrap:wrap;}
+  .card-links a{
+    display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;
+    padding:8px 13px;border-radius:10px;border:1px solid var(--border);background:var(--bg-soft);
+    color:var(--text);
+  }
+  .card-links a:hover{text-decoration:none;border-color:var(--accent);color:var(--accent);}
+  .card-links a.docs{color:var(--accent);}
+  .card-links a.download{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none;}
+  .card-links a.download:hover{color:#fff;opacity:.92;}
+
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px 0;}
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    border-top:1px solid var(--border);margin-top:30px;padding:34px 0 60px;
+    text-align:center;color:var(--muted);font-size:14px;
+  }
+  footer.site a{color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <!-- ================= SITE SETTINGS — edit these lines ================= -->
+    <span class="badge">Aryg Productions</span>
+    <h1>Aryg Apps</h1>
+    <p class="tagline">
+      One place for all my projects — documentation, guides, and source code.
+      Pick an app below to dive in.
+    </p>
+    <!-- =================================================================== -->
+    <div class="header-actions">
+      <a class="btn primary" href="#apps">Browse apps ↓</a>
+      <a class="btn ghost" href="https://github.com/arygproductions" target="_blank" rel="noopener">My GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="apps">
+  <div class="toolbar">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <input id="searchBox" type="text" placeholder="Search apps…" oninput="renderApps()" />
+    </div>
+  </div>
+
+  <div class="grid" id="appGrid"><!-- cards are inserted here by the script below --></div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    Built by Aryg Productions · <a href="https://github.com/arygproductions" target="_blank" rel="noopener">GitHub</a> ·
+    <span id="year"></span>
+  </div>
+</footer>
+
+<script>
+/* ======================================================================= */
+/*  ⭐ THIS IS THE ONLY LIST YOU NEED TO EDIT TO ADD/CHANGE APPS ⭐         */
+/*                                                                         */
+/*  Each app is one { ... } block separated by a comma.                    */
+/*  Copy a whole block, paste it below, and change the text.               */
+/*                                                                         */
+/*  Fields:                                                                */
+/*    name   = the app's name                                              */
+/*    icon   = any emoji (just for decoration)                             */
+/*    desc   = one or two sentences about the app                          */
+/*    tags   = short labels in [ ] e.g. ["iOS","Swift"] (optional)         */
+/*    docs   = link to your documentation (use "" if none yet)             */
+/*    github = link to the GitHub repo (use "" if none yet)                */
+/* ======================================================================= */
+const APPS = [
+  {
+    name: "Omzulink",
+    icon: "🔗",
+    desc: "Send files and quick messages between your phone and your Mac over your own network (Wi-Fi, Hotspot, USB) — nothing goes through the internet or any cloud. No accounts, no ads, no tracking.",
+    tags: ["macOS", "Android", "iOS", "Wi-Fi"],
+    docs: "https://github.com/arygproductions/Omzulink#readme",
+    github: "https://github.com/arygproductions/Omzulink",
+    download: "https://github.com/arygproductions/Omzulink/releases/latest"
+  }
+];
+/* ======================  END OF THE EDITABLE LIST  ====================== */
+
+
+/* --- You can ignore everything below: it just draws the page. --- */
+function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function renderApps(){
+  const q = (document.getElementById("searchBox").value || "").toLowerCase();
+  const grid = document.getElementById("appGrid");
+  const list = APPS.filter(a =>
+    (a.name + " " + a.desc + " " + (a.tags||[]).join(" ")).toLowerCase().includes(q)
+  );
+
+  if(list.length === 0){
+    grid.innerHTML = '<div class="empty">No apps match your search.</div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(a => {
+    const tags = (a.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+    const docsLink = a.docs ? `<a class="docs" href="${esc(a.docs)}" target="_blank" rel="noopener">📖 Docs</a>` : "";
+    const ghLink   = a.github ? `<a href="${esc(a.github)}" target="_blank" rel="noopener">⌨ GitHub</a>` : "";
+    const dlLink   = a.download ? `<a class="download" href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
+    return `
+      <div class="card">
+        <div class="icon">${esc(a.icon||"📦")}</div>
+        <h3>${esc(a.name)}</h3>
+        <p class="desc">${esc(a.desc)}</p>
+        ${tags ? `<div class="tags">${tags}</div>` : ""}
+        <div class="card-links">${docsLink}${ghLink}${dlLink}</div>
+      </div>`;
+  }).join("");
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderApps();
+</script>
+</body>
+</html>
