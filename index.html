@@ -264,7 +264,7 @@ function renderApps(){
     const tags = (a.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
     const docsLink = a.docs ? `<a class="docs" href="${esc(a.docs)}" target="_blank" rel="noopener">📖 Docs</a>` : "";
     const ghLink   = a.github ? `<a href="${esc(a.github)}" target="_blank" rel="noopener">⌨ GitHub</a>` : "";
-    const dlLink   = a.download ? `<a class="download" href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
+    const dlLink   = a.download ? `<a href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
     return `
       <div class="card">
         <div class="icon">${esc(a.icon||"📦")}</div>
