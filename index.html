@@ -233,7 +233,10 @@ const APPS = [
     name: "Omzulink (beta)",
     icon: "🔗",
     desc: "Send files and quick messages between your phone and your Mac over your own network (Wi-Fi, Hotspot, USB) — nothing goes through the internet or any cloud. No accounts, no ads, no tracking. Currently in public beta — v1.7.",
-    tags: ["macOS", "Android", "iOS", "Wi-Fi"],
+    tags: ["macOS", "Android", "iOS"],
+    privacy: "https://arygproductions.com/omzulink-privacy/",
+    androidBeta: "mailto:arygproductions@gmail.com?subject=Omzulink%20-%20Android%20beta%20request&body=Hi%2C%0A%0AI%20would%20like%20to%20join%20the%20Omzulink%20Android%20beta%20on%20Google%20Play.%20Please%20add%20me%20as%20a%20tester.%0A%0AThe%20Google%20account%20email%20I%20use%20on%20the%20Play%20Store%3A%0A%0AThanks!",
+    iosBeta: "mailto:arygproductions@gmail.com?subject=Omzulink%20-%20iOS%20TestFlight%20request&body=Hi%2C%0A%0AI%20would%20like%20to%20join%20the%20Omzulink%20iOS%20(TestFlight)%20beta.%20Please%20send%20me%20an%20invite.%0A%0AMy%20Apple%20ID%20email%3A%0A%0AThanks!",
     docs: "https://github.com/arygproductions/Omzulink#readme",
     github: "https://github.com/arygproductions/Omzulink",
     download: "https://github.com/arygproductions/Omzulink/releases/latest"
@@ -268,7 +271,7 @@ function renderApps(){
         <h3>${esc(a.name)}</h3>
         <p class="desc">${esc(a.desc)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <div class="card-links">${docsLink}${ghLink}${dlLink}</div>
+        <div class="card-links">${docsLink}${ghLink}${dlLink}${a.privacy?`<a href="${esc(a.privacy)}" target="_blank" rel="noopener">🔒 Privacy policy</a>`:""}${a.androidBeta?`<a href="${esc(a.androidBeta)}">🤖 Android beta</a>`:""}${a.iosBeta?`<a href="${esc(a.iosBeta)}">🍎 iOS beta</a>`:""}</div>
       </div>`;
   }).join("");
 }
