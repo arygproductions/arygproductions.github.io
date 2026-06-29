@@ -166,6 +166,14 @@
   .card-links a.download{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none;}
   .card-links a.download:hover{color:#fff;opacity:.92;}
 
+  .card-email{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;color:var(--muted);}
+  .card-email .email-lbl{font-weight:600;}
+  .card-email .email-addr{color:var(--accent);font-weight:600;text-decoration:none;}
+  .card-email .email-addr:hover{text-decoration:underline;}
+  .card-email .email-copy{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);}
+  .card-email .email-copy:hover{border-color:var(--accent);color:var(--accent);}
+  .card-email .email-copy.copied{border-color:#2ecc71;color:#2ecc71;}
+
   .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px 0;}
 
   /* ---------- Footer ---------- */
@@ -271,10 +279,12 @@ function renderApps(){
         <h3>${esc(a.name)}</h3>
         <p class="desc">${esc(a.desc)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <div class="card-links">${docsLink}${ghLink}${dlLink}${a.privacy?`<a href="${esc(a.privacy)}" target="_blank" rel="noopener">🔒 Privacy policy</a>`:""}${a.androidBeta?`<a href="${esc(a.androidBeta)}">🤖 Android beta</a>`:""}${a.iosBeta?`<a href="${esc(a.iosBeta)}">🍎 iOS beta</a>`:""}</div>
+        <div class="card-links">${docsLink}${ghLink}${dlLink}${a.privacy?`<a href="${esc(a.privacy)}" target="_blank" rel="noopener">🔒 Privacy policy</a>`:""}${a.androidBeta?`<a href="${esc(a.androidBeta)}">🤖 Android beta</a>`:""}${a.iosBeta?`<a href="${esc(a.iosBeta)}">🍎 iOS beta</a>`:""}</div>${(a.androidBeta||a.iosBeta)?`<div class="card-email"><span class="email-lbl">Beta access:</span> <a class="email-addr" href="mailto:arygproductions@gmail.com">arygproductions@gmail.com</a> <button type="button" class="email-copy" data-email="arygproductions@gmail.com" onclick="copyEmail(this)" title="Copy email address">⧉ Copy</button></div>`:""}
       </div>`;
   }).join("");
 }
+
+function copyEmail(btn){var email=btn.getAttribute("data-email")||"arygproductions@gmail.com";function done(){var o=btn.innerHTML;btn.innerHTML="✓ Copied";btn.classList.add("copied");setTimeout(function(){btn.innerHTML=o;btn.classList.remove("copied");},1500);}function fb(){var t=document.createElement("textarea");t.value=email;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.focus();t.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(t);done();}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(email).then(done).catch(fb);}else{fb();}}
 
 document.getElementById("year").textContent = new Date().getFullYear();
 renderApps();
