@@ -166,14 +166,6 @@
   .card-links a.download{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none;}
   .card-links a.download:hover{color:#fff;opacity:.92;}
 
-  .card-email{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;color:var(--muted);}
-  .card-email .email-lbl{font-weight:600;}
-  .card-email .email-addr{color:var(--accent);font-weight:600;text-decoration:none;}
-  .card-email .email-addr:hover{text-decoration:underline;}
-  .card-email .email-copy{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);}
-  .card-email .email-copy:hover{border-color:var(--accent);color:var(--accent);}
-  .card-email .email-copy.copied{border-color:#2ecc71;color:#2ecc71;}
-
   .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px 0;}
 
   /* ---------- Footer ---------- */
@@ -238,13 +230,10 @@
 /* ======================================================================= */
 const APPS = [
   {
-    name: "Omzulink (beta)",
+    name: "Omzulink",
     icon: "🔗",
-    desc: "Send files and quick messages between your phone and your Mac over your own network (Wi-Fi, Hotspot, USB) — nothing goes through the internet or any cloud. No accounts, no ads, no tracking. Currently in public beta — v1.8.",
-    tags: ["macOS", "Android", "iOS"],
-    privacy: "https://arygproductions.com/omzulink-privacy/",
-    androidBeta: "mailto:arygproductions@gmail.com?subject=Omzulink%20-%20Android%20beta%20request&body=Hi%2C%0A%0AI%20would%20like%20to%20join%20the%20Omzulink%20Android%20beta%20on%20Google%20Play.%20Please%20add%20me%20as%20a%20tester.%0A%0AThe%20Google%20account%20email%20I%20use%20on%20the%20Play%20Store%3A%0A%0AThanks!",
-    iosBeta: "mailto:arygproductions@gmail.com?subject=Omzulink%20-%20iOS%20TestFlight%20request&body=Hi%2C%0A%0AI%20would%20like%20to%20join%20the%20Omzulink%20iOS%20(TestFlight)%20beta.%20Please%20send%20me%20an%20invite.%0A%0AMy%20Apple%20ID%20email%3A%0A%0AThanks!",
+    desc: "Send files and quick messages between your phone and your Mac over your own Wi-Fi — nothing goes through the internet or any cloud. Compose while you're offline and it syncs automatically when you reconnect. No accounts, no ads, no tracking.",
+    tags: ["macOS", "Android", "iOS", "Wi-Fi"],
     docs: "https://github.com/arygproductions/Omzulink#readme",
     github: "https://github.com/arygproductions/Omzulink",
     download: "https://github.com/arygproductions/Omzulink/releases/latest"
@@ -272,19 +261,17 @@ function renderApps(){
     const tags = (a.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
     const docsLink = a.docs ? `<a class="docs" href="${esc(a.docs)}" target="_blank" rel="noopener">📖 Docs</a>` : "";
     const ghLink   = a.github ? `<a href="${esc(a.github)}" target="_blank" rel="noopener">⌨ GitHub</a>` : "";
-    const dlLink   = a.download ? `<a href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
+    const dlLink   = a.download ? `<a class="download" href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
     return `
       <div class="card">
         <div class="icon">${esc(a.icon||"📦")}</div>
         <h3>${esc(a.name)}</h3>
         <p class="desc">${esc(a.desc)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <div class="card-links">${docsLink}${ghLink}${dlLink}${a.privacy?`<a href="${esc(a.privacy)}" target="_blank" rel="noopener">🔒 Privacy policy</a>`:""}${a.androidBeta?`<a href="${esc(a.androidBeta)}">🤖 Android beta</a>`:""}${a.iosBeta?`<a href="${esc(a.iosBeta)}">🍎 iOS beta</a>`:""}</div>${(a.androidBeta||a.iosBeta)?`<div class="card-email"><span class="email-lbl">Beta access:</span> <a class="email-addr" href="mailto:arygproductions@gmail.com">arygproductions@gmail.com</a> <button type="button" class="email-copy" data-email="arygproductions@gmail.com" onclick="copyEmail(this)" title="Copy email address">⧉ Copy</button></div>`:""}
+        <div class="card-links">${docsLink}${ghLink}${dlLink}</div>
       </div>`;
   }).join("");
 }
-
-function copyEmail(btn){var email=btn.getAttribute("data-email")||"arygproductions@gmail.com";function done(){var o=btn.innerHTML;btn.innerHTML="✓ Copied";btn.classList.add("copied");setTimeout(function(){btn.innerHTML=o;btn.classList.remove("copied");},1500);}function fb(){var t=document.createElement("textarea");t.value=email;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.focus();t.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(t);done();}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(email).then(done).catch(fb);}else{fb();}}
 
 document.getElementById("year").textContent = new Date().getFullYear();
 renderApps();
