@@ -259,16 +259,14 @@ function renderApps(){
 
   grid.innerHTML = list.map(a => {
     const tags = (a.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
-    const contactLink = a.contact ? `<a class="download" href="mailto:${esc(a.contact)}?subject=${encodeURIComponent(a.name + " — download request")}">✉ Contact the developer</a>` : "";
-    const contactEmail = a.contact ? `<div style="margin-top:10px;font-size:13px;color:var(--muted)">or email <a href="mailto:${esc(a.contact)}" style="color:var(--accent)">${esc(a.contact)}</a></div>` : "";
+    const contactText = a.contact ? `<div style="margin-top:4px;font-size:15px;color:var(--muted)">Contact developer by emailing <a href="mailto:${esc(a.contact)}" style="color:var(--accent);font-weight:600">${esc(a.contact)}</a></div>` : "";
     return `
       <div class="card">
         <div class="icon">${esc(a.icon||"📦")}</div>
         <h3>${esc(a.name)}</h3>
         <p class="desc">${esc(a.desc)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <div class="card-links">${contactLink}</div>
-        ${contactEmail}
+        ${contactText}
       </div>`;
   }).join("");
 }
