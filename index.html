@@ -138,11 +138,11 @@
 
   /* ---------- App grid ---------- */
   .grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,360px));
+    display:flex;flex-wrap:wrap;
     gap:20px;padding-bottom:30px;justify-content:center;
   }
   .card{
-    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    width:340px;max-width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
     padding:24px;display:flex;flex-direction:column;transition:.18s ease;
   }
   .card:hover{background:var(--card-hover);transform:translateY(-3px);border-color:var(--accent);}
