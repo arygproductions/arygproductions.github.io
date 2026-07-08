@@ -236,11 +236,7 @@ const APPS = [
     icon: "🔗",
     desc: "Send files and quick messages between your phone and your Mac over your own Wi-Fi — nothing goes through the internet or any cloud. Compose while you're offline and it syncs automatically when you reconnect. No accounts, no ads, no tracking.",
     tags: ["macOS", "Android", "iOS", "Wi-Fi", "Linux (beta)", "Chrome OS (beta)"],
-    docs: "https://github.com/arygproductions/Omzulink#readme",
-    github: "https://github.com/arygproductions/Omzulink",
-    download: "https://github.com/arygproductions/Omzulink/releases/latest",
-    downloadLinux: "https://github.com/arygproductions/Omzulink/releases/latest",
-    downloadChrome: "https://github.com/arygproductions/Omzulink/releases/latest"
+    contact: "arygproductions@gmail.com"
   }
 ];
 /* ======================  END OF THE EDITABLE LIST  ====================== */
@@ -263,18 +259,14 @@ function renderApps(){
 
   grid.innerHTML = list.map(a => {
     const tags = (a.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
-    const docsLink = a.docs ? `<a class="docs" href="${esc(a.docs)}" target="_blank" rel="noopener">📖 Docs</a>` : "";
-    const ghLink   = a.github ? `<a href="${esc(a.github)}" target="_blank" rel="noopener">⌨ GitHub</a>` : "";
-    const dlLink   = a.download ? `<a class="download" href="${esc(a.download)}" target="_blank" rel="noopener">⬇ Download (Mac)</a>` : "";
-    const dlLinux  = a.downloadLinux ? `<a class="download beta" href="${esc(a.downloadLinux)}" target="_blank" rel="noopener">⬇ Download Linux (beta · testing)</a>` : "";
-    const dlChrome = a.downloadChrome ? `<a class="download beta" href="${esc(a.downloadChrome)}" target="_blank" rel="noopener">⬇ Download Chrome OS (beta · testing)</a>` : "";
+    const contactLink = a.contact ? `<a class="download" href="mailto:${esc(a.contact)}?subject=${encodeURIComponent(a.name + " — download request")}">✉ Contact the developer</a>` : "";
     return `
       <div class="card">
         <div class="icon">${esc(a.icon||"📦")}</div>
         <h3>${esc(a.name)}</h3>
         <p class="desc">${esc(a.desc)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
-        <div class="card-links">${docsLink}${ghLink}${dlLink}${dlLinux}${dlChrome}</div>
+        <div class="card-links">${contactLink}</div>
       </div>`;
   }).join("");
 }
